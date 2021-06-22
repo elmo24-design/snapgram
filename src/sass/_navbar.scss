@@ -1,0 +1,82 @@
+.navbar{
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   padding: 0.5rem 0;
+}
+.title{
+   font-family: 'Pattaya', sans-serif;
+   font-size: 2rem;
+   flex: 1;
+}
+.searchField{
+   flex: 1;
+   position: relative;
+}
+.card-body{
+   background-color: white;
+   position: absolute;
+   width: 74.5%;
+   border-radius: 5px;
+   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+   margin-top: 5px;
+  .card-body-inner{
+      display: flex;
+      align-items: center;
+      color: black;
+      padding: 7px;
+      span{
+         font-weight: bold;
+         padding-left: 5px;
+         font-size: 14px;
+         cursor: pointer;
+         &:hover{
+            text-decoration: underline;
+         }
+      }
+  }
+}
+.search-inner{
+   display: flex;
+   align-items: center;
+   background-color: #698AFF;
+   width: 70%;
+   border-radius: 3px;
+   padding-left: 1rem;
+   &:hover{
+      background-color: #7693fc;
+   }
+}
+.search-input{
+   padding: 0.5rem;
+   font-size: 1rem;
+   border: none;
+   background: none;
+   outline: none;
+   color: white;
+   width: 100%;
+}
+.search-input::placeholder{
+   color: white;
+}
+.icons{
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   flex:1;
+}
+.icons i{
+   padding-left: 1.5rem;
+   font-size: 1.3rem;
+}
+#avatar{
+   margin-left: 1.5rem;
+   cursor: pointer;
+}
+a{
+   text-decoration: none;
+   color: white;
+}
+.profile-link{
+   color: black;
+}

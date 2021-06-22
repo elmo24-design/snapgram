@@ -1,0 +1,258 @@
+.profile-heading{
+   display: flex;
+   align-items: center;
+   line-height: 0%;
+   margin-bottom: 2rem;
+}
+.aside{
+   padding-left: 1rem;
+   margin-top: 2.5rem;
+   h4{
+      font-size: 1.2rem;
+      font-weight: normal;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+   }
+}
+.social{
+   display: flex;
+   :first-child{
+      padding-left: 0;
+   }
+   h3{
+      padding-left: 1rem;
+      font-weight: normal;
+      span{
+         font-weight: bold;
+         font-size: 1.5rem;
+         margin-right: 0.5rem;
+      }
+   }
+}
+.user-bio{
+   display: flex;
+   align-items: center;
+}
+.user-link{
+   color: blue;
+}
+
+//upload image styles
+.upload-image-form{
+   position: relative;
+   margin-right: 5px;
+}
+.upload-image-label input{
+   height: 0;
+   width: 0;
+   opacity: 0;
+}
+.upload-image-label{
+   position:absolute;
+   right: 0;
+   bottom: 0;
+   display: block;
+   text-align: center;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   background-color: rgb(0, 140, 255);
+   color: white;
+   font-weight: bold;
+   font-size: 24px;
+   transition: 0.3s;
+   &:hover{
+      background-color: rgb(0, 91, 209);
+      color: white;
+      cursor: pointer;
+   }
+}
+.add-icon-image{
+   padding-top: 7px;
+}
+/* progress bar styles */
+.progress-bar{
+   height: 10px;
+   background:rgb(0, 102, 255);
+   margin-top: 10px;
+   position: absolute;
+   max-width: 80%;
+}
+.progress-add{
+   height: 10px;
+   background:rgb(0, 102, 255);
+   margin-top: 30px;
+}
+//Image grid
+.img-grid{
+   display: grid;
+   grid-template-columns: repeat(4,1fr);
+   margin: 20px auto;
+   grid-gap: 20px;
+}
+.img-wrap{
+   overflow: hidden;
+   height: 0;
+   padding: 50% 0;
+   position: relative;
+   opacity: 0.8;
+   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+   &:hover{
+      cursor: pointer;
+   }
+   img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      max-width: 150%;
+   }
+}
+//Image Modal
+.backdrop-img{
+   display: grid;
+   grid-template-columns: 60% 40%;
+   height: 100%;
+   width: 100%;
+}
+.grid-1{
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 100vh;
+   background-color: rgba(44, 90, 255, 0.2);
+}
+.modal-img{
+   display: block;
+   max-width: 100%;
+   max-height: 100%;
+   box-shadow: 3px 5px 7px rgba(0,0,0,0.5);
+}
+//forum window
+.forum-window{
+   background-color: white;
+   padding: 10px;
+   overflow-y: scroll;
+}
+#close{
+   position: absolute;
+   left: 0;
+   color: white;
+   background-color: rgba(255, 255, 255,0.2);
+   padding: 1rem 1.2rem;
+   margin: 20px;
+   border-radius: 50%;
+   cursor: pointer;
+   z-index: 3;
+   &:hover{
+      opacity: 0.9;
+   }
+}
+.heading{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   div{
+      display: flex;
+      align-items: center;
+   }
+   p{
+      font-weight: bold;
+      margin-left: 0.5rem;
+   }
+   #ellipsis{
+      cursor: pointer;
+      margin-left: 1rem;
+   }
+}
+.status{
+   margin-top: -1rem;
+   margin-left: 1rem;
+   color: grey;
+}
+.heading2{
+   margin-top:1rem;
+   margin-bottom: 1rem;
+   position: relative;
+   .inner{
+      display: flex;
+      align-items: center;
+      .comment-user-details{
+         display: flex;
+      }
+      p{
+         font-weight: bold;
+         margin-left: 0.5rem;
+         margin-top: 0.1rem;
+      }
+      div{
+         font-size: 0.9rem;
+      }
+   }
+   .desc{
+      margin-left: 3rem;
+      margin-top: -0.7rem;
+   }
+   .createdAt{
+      color: grey;
+      font-size: 0.7rem;
+      margin-left: 3rem;
+      margin-top: 1rem;
+   }
+}
+.comment-heading{
+   margin: 10px 0;
+   color: grey;
+   span{
+      margin-left: 0.5rem;
+   }
+}
+.comment-section{
+   height: 50%;
+   max-height: 50%;
+   overflow-y: scroll;
+}
+.createdAtComment{
+   color: grey;
+   font-size: 0.7rem;
+   margin-top: -1rem;
+   margin-left: 0.5rem;
+}
+#delete-comment{
+   color: grey;
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   margin-bottom: 15px;
+   margin-right: 15px;
+   cursor: pointer;
+   font-size: 13px;
+}
+.icons-comment{
+   display: flex;
+   align-items: center;
+   margin-top: 1rem;
+   i{
+      font-size: 1.5rem;
+      cursor: pointer;
+   }
+   small{
+      padding-left: 0.3rem;
+   }
+   #comment-icon{
+      margin-left: 1rem;;
+   }
+}
+.comment-form{
+   display: flex;
+   align-items: center;
+}
+.followersOfUser{
+   cursor: pointer;
+   &:hover{
+      text-decoration: underline;
+   }
+}

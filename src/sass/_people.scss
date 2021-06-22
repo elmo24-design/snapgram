@@ -1,0 +1,39 @@
+.people{
+   padding-top: 8rem;
+   width: 50%;
+}
+.heading-people{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding-bottom: 10px;
+   h2{
+      color:#2C5AFF;
+      margin-bottom: 5px;
+   }
+}
+.inner-list{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px 0;
+   .user-details-people{
+      display: flex;
+      align-items: center;
+      span{
+         padding-left: 5px;
+         font-weight: bold;
+         font-size: 1.1rem;
+         cursor: pointer;
+         &:hover{
+            text-decoration: underline;
+         }
+      }
+      small{
+         margin-left: 5px;
+         background-color: rgb(221, 221, 221);
+         padding: 5px;
+         border-radius: 5px;
+      }
+   }
+}
