@@ -7,12 +7,21 @@ import { useState } from "react";
 import useCurrentUser from "../hooks/useCurrentUser";
 import { projectFirestore, timestamp } from "../firebase/config";
 import useAllPosts from "../hooks/useAllPosts";
+import { Link } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+   link:{
+      color: 'black'
+   }
+}))
 
 const People = () => {
    const {usersCollection} = useAllUsers('users') // all users
    const {userCollection} = useCurrentUser('users') //current user's details
    const {user} = useAuth() // current user firebase details
    const {docs} = useAllPosts('memories') // all posts
+   const classes = useStyles()
 
    const [searchText,setSearchText] = useState('')
    
@@ -102,7 +111,9 @@ const People = () => {
                                           <div className="inner-list">
                                              <div className="user-details-people">
                                                 <Avatar src={singleUser.profilePic} alt="user"/>
-                                                <span>{singleUser.username}</span>
+                                                <Link to={`/user/${singleUser.id}`} className={classes.link}>
+                                                   <span>{singleUser.username}</span>
+                                                </Link>
                                                 {
                                                   singleUser.following && singleUser.following.includes(user.uid) ?
                                                       <small>Follows you</small>

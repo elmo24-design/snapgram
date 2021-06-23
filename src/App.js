@@ -7,6 +7,7 @@ import Notifications from './views/Notifications';
 import Signin from "./views/Signin";
 import Signup from "./views/Signup";
 import People from './views/People';
+import UserProfile from './views/UserProfile';
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 
@@ -39,6 +40,9 @@ function App() {
                </Route>
                <Route path="/people">
                   <People />
+               </Route>
+               <Route path="/user/:id">
+                  <UserProfile />
                </Route>
                <Route path="/signup">
                   <Signup />
