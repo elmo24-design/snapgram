@@ -79,7 +79,7 @@ const EditInfo = ({setEditInfo,user,userCollection,updateEmail}) => {
    
 
    const closeModal = (e) => {
-      if(e.target.classList == 'backdrop'){
+      if(e.target.classList.contains('backdrop')){
          setEditInfo(false)
       }
    }

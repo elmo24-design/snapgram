@@ -5,7 +5,6 @@ import { projectStorage, projectFirestore } from '../firebase/config';
 const useUploadImage = (file) => {
    //user creds
    const {user} = useAuth()
-   const [docs,setDocs] = useState([])
 
    //progress states
    const [progress,setProgress] = useState(0)
@@ -29,7 +28,7 @@ const useUploadImage = (file) => {
        
          setUrl(url)
       })
-   }, [file])
+   }, [file, user])
 
    return { progress, url, error }
 

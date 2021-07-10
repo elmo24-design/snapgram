@@ -37,3 +37,23 @@
       }
    }
 }
+@media(max-width: 900px){
+   .people{
+      width: 95%;
+   }
+}
+@media(max-width: 400px){
+   .inner-list{
+      .user-details-people{
+         span{
+            font-size: 0.8rem;
+            &:hover{
+               text-decoration: underline;
+            }
+         }
+         small{
+            font-size: 0.6rem;
+         }
+      }
+   }
+}

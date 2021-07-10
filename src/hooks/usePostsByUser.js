@@ -1,27 +1,25 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "../contexts/AuthContext";
 import { projectFirestore } from "../firebase/config";
 
-const useAllPublicPosts = (collection) => {
-   const [docs,setDocs] = useState([])
-   const {user} = useAuth()
+const usePostsByUser = (id) => {
+   const [userDocs,setDocs] = useState([])
 
    useEffect(() => {
-      const unsub = projectFirestore.collection(collection)
+      const unsub = projectFirestore.collection('memories')
       .orderBy('createdAt','desc')
       .onSnapshot(snap => {
          let results = []
          snap.docs.forEach(doc => {
-            if(doc.data().status === 'public' && doc.data().followers.includes(user.uid)){
+            if(doc.data().userId === id){
                doc.data().createdAt && results.push({ ...doc.data(), id: doc.id})
             }
          })
          setDocs(results)
       })
       return (() => unsub())
-   }, [collection, user])
+   }, [id])
 
-   return {docs}
+   return {userDocs}
 }
  
-export default useAllPublicPosts;
+export default usePostsByUser;

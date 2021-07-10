@@ -19,7 +19,7 @@ const useComments = (collection,selectedPost) => {
       })
       return (() => unsub())
       
-   }, [collection])
+   }, [collection, selectedPost])
 
    return {comments}
 }

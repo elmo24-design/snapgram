@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import useAllUsers from '../hooks/useAllUsers';
 import {Avatar, Divider} from '@material-ui/core';
 import {Button} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const backdrop = {
    hidden: {
@@ -43,7 +44,7 @@ const FollowingModal = ({targetUserFollowing,setTargetUserFollowing}) => {
          onClick={closeModal}
       >
          <motion.div className="modal likes-modal" variants={modal}>
-            <h1>You are following</h1>
+            <h1>Following</h1>
             <Divider />
                {
                   targetUserFollowing.following.length !== 0 ?
@@ -58,14 +59,16 @@ const FollowingModal = ({targetUserFollowing,setTargetUserFollowing}) => {
                                              <Avatar src={user.profilePic}/>
                                              <span>{user.username}</span>
                                           </div>
-                                       
-                                          <Button 
-                                             variant="contained" 
-                                             color="primary" 
-                                             size="small"
-                                          >
-                                             View Profile
-                                          </Button> 
+
+                                          <Link to={`/user/${user.id}`}>
+                                             <Button 
+                                                variant="contained" 
+                                                color="primary" 
+                                                size="small"
+                                             >
+                                                View Profile
+                                             </Button> 
+                                          </Link>
                                        </div>
                                     : 
                                     ''

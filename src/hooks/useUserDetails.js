@@ -5,7 +5,7 @@ const useUserDetails = (id) => {
    const [selectedUser,setSelectedUser] = useState([])
 
    useEffect(() => {
-      projectFirestore.collection('users')
+      const unsub = projectFirestore.collection('users')
       .orderBy('createdAt','desc')
       .onSnapshot(snap => {
          snap.docs.forEach(doc => {
@@ -14,6 +14,7 @@ const useUserDetails = (id) => {
             }
          })
       })
+      return () => unsub()
    }, [id])
 
    return {selectedUser}

@@ -15,7 +15,7 @@ const useCurrentUser = (collection) => {
          })
          return () => unsub()
       }
-   }, [collection])
+   }, [collection, user])
 
    return {userCollection}
 }

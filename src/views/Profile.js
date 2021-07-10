@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Avatar, Button, Divider} from '@material-ui/core';
+import {Avatar, Divider} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useAuth } from '../contexts/AuthContext';
 import useCurrentUser from '../hooks/useCurrentUser';
@@ -145,17 +145,21 @@ const Profile = () => {
          <Header />
          <div class="inner-container profile">
             <div className="profile-heading">
-               <div>
+               <div className="profile-heading-1">
                   {
                      userCollection.profilePic ?
-                     <Avatar 
-                        src={userCollection.profilePic} 
-                        className={classes.big}
-                     /> 
-                     : 
-                     <Avatar 
-                        className={classes.big}
-                     />
+                     <div className="avatar-profile">
+                        <Avatar 
+                           src={userCollection.profilePic} 
+                           className={classes.big} 
+                        />
+                     </div>
+                     :
+                     <div id="avatar-profile">
+                        <Avatar 
+                           className={classes.big}
+                        />
+                     </div> 
                   }
                   {/* <Fab color="secondary" aria-label="add" className={classes.addEllipse}>
                      <AddIcon className={classes.add}/>
@@ -164,7 +168,7 @@ const Profile = () => {
                </div>
                <div className="aside">
                   <div className="user-bio">
-                     <div>
+                     <div className="user-info">
                         <h1>{userCollection.username}</h1>
                         {
                            userCollection.bio && 
@@ -172,9 +176,11 @@ const Profile = () => {
                         }
                        
                      </div>
-                     <Fab aria-label="edit" className={classes.edit} onClick={() => setEditModal(true)}>
-                        <EditIcon />
-                     </Fab>
+                     <div className="edit-profile">
+                        <Fab aria-label="edit" className={classes.edit} onClick={() => setEditModal(true)}>
+                           <EditIcon />
+                        </Fab>
+                     </div>
                   </div>
                   <div className="social">
                      <h3>
@@ -219,18 +225,20 @@ const Profile = () => {
                         following
                      </h3>
                   </div>
-                  {
-                     user && <p>@{user.email}</p>
-                  }
-                  {
-                     userCollection.website && 
-                     <small>Personal Website: <a href={userCollection.website} className="user-link" target="_blank">{userCollection.website}</a></small>
-                  }
+                  <div className="email-website">
+                     {
+                        user && <p>@{user.email}</p>
+                     }
+                     {
+                        userCollection.website && 
+                        <small>Personal Website: <a href={userCollection.website} className="user-link" target="_blank" rel="noreferrer">{userCollection.website}</a></small>
+                     }
+                  </div>
                </div>
             </div>
             <Divider />
             <div>
-               <ImageGridProfile setAddModal={setAddModal} setSelectedPost={setSelectedPost}/> 
+               <ImageGridProfile setAddModal={setAddModal} setSelectedPost={setSelectedPost} docs={docs}/> 
             </div>
          </div>
       </div>

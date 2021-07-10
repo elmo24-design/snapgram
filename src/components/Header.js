@@ -20,7 +20,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 //icons
 import PersonIcon from '@material-ui/icons/Person';
-import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 
@@ -44,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
       color: 'white',
       fontSize: '1.3rem'
    },
+   header:{
+      zIndex: 1
+   },
    list: { 
       width: '10rem',
       backgroundColor: theme.palette.background.paper,
@@ -54,8 +56,8 @@ const useStyles = makeStyles((theme) => ({
    active_popover: {
       background: '#f4f4f4',
    },
-   header:{
-      zIndex: '1'
+   link:{
+      color: 'black'
    }
 }))
 
@@ -115,9 +117,11 @@ const Header = ({setAddModal}) => {
                   </Link>
                   {
                      location.pathname=== '/home' ?
+                     <div className="addBtn-header">
                         <Fab color="secondary" aria-label="edit" className={classes.create} onClick={() => setAddModal(true)}>
                            <EditIcon className={classes.icon} />
                         </Fab>
+                     </div>
                      :
                      ''
                   }
@@ -139,9 +143,21 @@ const Header = ({setAddModal}) => {
                               {
                                  matches.map(match => (
                                     <div>
+
                                        <div className="card-body-inner" key={match.id}>
                                           <Avatar src={match.profilePic} alt="avatar" className={classes.small} />
-                                          <span>{match.username}</span>
+                                          
+                                          <Link to={`/user/${match.id}`} className={classes.link}>
+                                             <span>
+                                                {match.username}
+                                                {
+                                                   match.id === user.uid ? 
+                                                   <span>(you)</span>
+                                                   :
+                                                   ''
+                                                }
+                                             </span>
+                                          </Link>
                                        </div>
                                        <Divider />
                                     </div>
@@ -157,7 +173,9 @@ const Header = ({setAddModal}) => {
                   <Link to="/home" className={location.pathname=== '/home' ? classes.active : null}> 
                      <i class="fas fa-home"></i>
                   </Link>
-                  <i class="fab fa-facebook-messenger"></i>
+                  <Link to="/chat" className={location.pathname=== '/chat' ? classes.active : null}> 
+                     <i class="fas fa-comments"></i>
+                  </Link>
                   <Link to="/people" className={location.pathname=== '/people' ? classes.active : null}>
                      <i class="fas fa-user-friends"></i>
                   </Link>
@@ -179,19 +197,24 @@ const Header = ({setAddModal}) => {
                   </div>
                   {
                     user && userCollection.profilePic ?
-                     <Avatar 
-                        src={userCollection.profilePic} 
-                        id="avatar" 
-                        className={classes.small}
-                        aria-describedby={id}
-                        onClick={handleClick}
-                     /> :
-                     <Avatar 
-                        id="avatar" 
-                        className={classes.small}
-                        aria-describedby={id}
-                        onClick={handleClick}
-                     />
+                    <div className="avatar-header">
+                        <Avatar 
+                           src={userCollection.profilePic} 
+                           id="avatar" 
+                           className={classes.small}
+                           aria-describedby={id}
+                           onClick={handleClick}
+                        /> 
+                    </div>
+                    :
+                    <div className="avatar-header">
+                        <Avatar 
+                           id="avatar" 
+                           className={classes.small}
+                           aria-describedby={id}
+                           onClick={handleClick}
+                        />
+                    </div>
                   }                 
                    <Popover
                      id={id}

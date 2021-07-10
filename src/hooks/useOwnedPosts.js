@@ -7,19 +7,21 @@ const useOwnedPosts = (collection) => {
    const {user} = useAuth()
 
    useEffect(() => {
-      const unsub = projectFirestore.collection(collection)
-      .orderBy('createdAt','desc')
-      .onSnapshot(snap => {
-         let results = []
-         snap.docs.forEach(doc => {
-            if(doc.data().userId === user.uid){
-               doc.data().createdAt && results.push({ ...doc.data(), id: doc.id})
-            }
+      if(user){
+         const unsub = projectFirestore.collection(collection)
+         .orderBy('createdAt','desc')
+         .onSnapshot(snap => {
+            let results = []
+            snap.docs.forEach(doc => {
+               if(doc.data().userId === user.uid){
+                  doc.data().createdAt && results.push({ ...doc.data(), id: doc.id})
+               }
+            })
+            setDocs(results)
          })
-         setDocs(results)
-      })
-      return (() => unsub())
-   }, [collection])
+         return (() => unsub())
+      }
+   }, [collection, user])
 
    return {docs}
 }

@@ -127,7 +127,7 @@ const ChangePassword = ({setChangePassword}) => {
    }
 
    const closeModal = (e) => {
-      if(e.target.classList == 'backdrop'){
+      if(e.target.classList.contains('backdrop')){
          setChangePassword(false)
       }
    }

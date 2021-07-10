@@ -103,7 +103,7 @@ const AddModal = ({setAddModal}) => {
 
    //functions
    const closeModal = (e) => {
-      if(e.target.classList == 'backdrop'){
+      if(e.target.classList.contains('backdrop')){
          setAddModal(false)
       }
    }

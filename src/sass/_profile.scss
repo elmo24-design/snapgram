@@ -1,3 +1,6 @@
+.profile{
+   padding-top: 3.5rem;
+}
 .profile-heading{
    display: flex;
    align-items: center;
@@ -7,11 +10,17 @@
 .aside{
    padding-left: 1rem;
    margin-top: 2.5rem;
-   h4{
-      font-size: 1.2rem;
-      font-weight: normal;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+   .user-info{
+      h1{
+         line-height: 2rem;
+         margin-top: -5px;
+      }
+      h4{
+         font-size: 1.2rem;
+         font-weight: normal;
+         margin-top: 1rem;
+         margin-bottom: 1rem;
+      }
    }
 }
 .social{
@@ -169,9 +178,15 @@
    }
 }
 .status{
-   margin-top: -1rem;
+   margin-top: -0.9rem;
    margin-left: 1rem;
    color: grey;
+}
+.username-forum-window{
+   cursor: pointer;
+   &:hover{
+      text-decoration: underline;
+   }
 }
 .heading2{
    margin-top:1rem;
@@ -186,7 +201,8 @@
       p{
          font-weight: bold;
          margin-left: 0.5rem;
-         margin-top: 0.1rem;
+         margin-top: 0.2rem;
+
       }
       div{
          font-size: 0.9rem;
@@ -254,5 +270,63 @@
    cursor: pointer;
    &:hover{
       text-decoration: underline;
+   }
+}
+@media(max-width: 1125px){
+   .img-grid{
+      grid-template-columns: repeat(3,1fr);
+   }
+}
+@media(max-width: 700px){
+   .img-grid{
+      grid-template-columns: repeat(2,1fr);
+   }
+   .profile{
+      padding-top:7rem;
+   }
+}
+@media(max-width: 550px){
+   .profile-heading{
+      display: block;
+   }
+   .profile-heading-1{
+      display: grid;
+      place-content: center;
+   }
+   .edit-profile{
+      position: absolute;
+      right: 0;
+      margin-right: 1rem;
+   }
+   .aside{
+     display: grid;
+     place-content: center;
+     margin-top: 1rem;
+     .user-info{
+         width: 100%;
+         h1{
+            text-align: center;
+            font-size: 1.6rem;
+         }
+         h4{
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+         }
+     }
+   }
+   .social{
+      margin-left: 2rem;
+   }
+   .email-website{
+      text-align: center;
+   }
+}
+@media(max-width: 400px){
+   .img-grid{
+      grid-template-columns: 1fr;
+   }
+   .edit-profile{
+      margin-right: 10px;
    }
 }

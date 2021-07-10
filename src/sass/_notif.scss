@@ -1,5 +1,5 @@
 .notif{
-   padding-top: 5rem;
+   padding-top: 8rem;
    width: 60%;
    margin: 0 auto;
 }
@@ -39,6 +39,9 @@
    color: rgb(0, 0, 0);
    transition: 0.3s;
    position: relative;
+   a{
+      color: rgb(0, 0, 0);
+   }
    &:hover{
       opacity: 0.9;
    }
@@ -52,6 +55,9 @@
    background-color: #2C80FF;
    color: white;
    transition: 0.3s;
+   a{
+      color: white;
+   }
    &:hover{
       opacity: 0.9;
    }
@@ -64,6 +70,10 @@
 .username-notif{
    font-weight: bold;
    padding-right: 4px;
+   cursor: pointer;
+   &:hover{
+      text-decoration: underline;
+   }
 }
 #trash-icon-notif{
    position: absolute;
@@ -83,4 +93,24 @@
 }
 #check-icon{
    color: green;
+}
+@media(max-width: 900px){
+   .notif{
+      width: 95%;
+   }
+}
+@media(max-width: 400px){
+   .inner-list{
+      .user-details-people{
+         span{
+            font-size: 0.8rem;
+            &:hover{
+               text-decoration: underline;
+            }
+         }
+         small{
+            font-size: 0.6rem;
+         }
+      }
+   }
 }

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import useAllUsers from '../hooks/useAllUsers';
-import {Avatar, Divider} from '@material-ui/core';
+import {Avatar, Divider, Button} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const backdrop = {
    hidden: {
@@ -58,7 +59,15 @@ const LikesModal = ({setLikedPost,likedPost}) => {
                                           <span>{user.username}</span>
                                           <i class="fas fa-heart" id="heart-likes-modal"></i>
                                        </div>
-                                    <p>View Profile</p>
+                                    <Link to={`/user/${user.id}`} >
+                                       <Button 
+                                          variant="contained" 
+                                          color="primary" 
+                                          size="small"
+                                       >
+                                          View Profile
+                                       </Button> 
+                                    </Link>
                                     </div>
                                  : 
                                  ''

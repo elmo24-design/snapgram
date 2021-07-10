@@ -135,95 +135,97 @@ const Signup = () => {
 
    return ( 
       <div className="sign-in">
-         <Card className="card">
-            <form noValidate autoComplete="off"
-            onSubmit={handleSubmit}
-            >
-               <h1>Snapgram</h1>
-               <TextField
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
-                  fullWidth 
-                  className={ classes.field }
-                  id="outlined-basic" 
-                  label="Username" 
-                  variant="filled" 
-                  required 
-                  error={displayNameError}
-                  helperText={displayNameErrorText}
-                  />
-               <TextField
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  fullWidth 
-                  className={ classes.field }
-                  required id="outlined-basic" 
-                  label="E-Mail Address"
-                  error={emailError}
-                  helperText={emailErrorText}
-                  variant="filled" />
-               <TextField
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  fullWidth 
-                  className={ classes.field }
-                  required 
-                  id="outlined-basic" 
-                  label="Password" 
-                  type="password"
-                  variant="filled"
-                  error={passwordError}
-                  helperText={passwordErrorText}
-                   />
-               <TextField
-                  value={passwordConfirm}
-                  onChange={(e) => setPasswordConfirm(e.target.value)}
-                  fullWidth 
-                  className={ classes.field }
-                  required 
-                  id="outlined-basic" 
-                  label="Confirm Password" 
-                  type="password"
-                  variant="filled"
-                  error={passwordConfirmError}
-                  helperText={passwordConfirmErrorText}
-                   />
-               {
-                  error && (
-                     <div className="error">
-                        { error }
-                     </div>
-                  )
-               }
-               {
-                  isPending ? 
-                     <Button
-                     fullWidth
-                     className={classes.button}
-                     variant="contained"
-                     color="primary"
-                     type="submit"
-                     disabled
-                     >
-                        Loading...
-                     </Button>
-                  :
-                     <Button
-                     fullWidth
-                     className={classes.button}
-                     variant="contained"
-                     color="primary"
-                     type="submit"
-                     >
-                        Sign up
-                     </Button> 
-               }
-               
-               <Link to="/">
-                  <p className="small">Already have an account? <span>Sign in</span></p>
-               </Link>
-            </form>
-         </Card>
+         <div className="card-wrapper-signup">
+            <Card className="card">
+               <form noValidate autoComplete="off"
+               onSubmit={handleSubmit}
+               >
+                  <h1>Snapgram</h1>
+                  <TextField
+                     value={displayName}
+                     onChange={(e) => setDisplayName(e.target.value)}
+                     fullWidth 
+                     className={ classes.field }
+                     id="outlined-basic" 
+                     label="Username" 
+                     variant="filled" 
+                     required 
+                     error={displayNameError}
+                     helperText={displayNameErrorText}
+                     />
+                  <TextField
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)}
+                     fullWidth 
+                     className={ classes.field }
+                     required id="outlined-basic" 
+                     label="E-Mail Address"
+                     error={emailError}
+                     helperText={emailErrorText}
+                     variant="filled" />
+                  <TextField
+                     value={password}
+                     onChange={(e) => setPassword(e.target.value)}
+                     fullWidth 
+                     className={ classes.field }
+                     required 
+                     id="outlined-basic" 
+                     label="Password" 
+                     type="password"
+                     variant="filled"
+                     error={passwordError}
+                     helperText={passwordErrorText}
+                     />
+                  <TextField
+                     value={passwordConfirm}
+                     onChange={(e) => setPasswordConfirm(e.target.value)}
+                     fullWidth 
+                     className={ classes.field }
+                     required 
+                     id="outlined-basic" 
+                     label="Confirm Password" 
+                     type="password"
+                     variant="filled"
+                     error={passwordConfirmError}
+                     helperText={passwordConfirmErrorText}
+                     />
+                  {
+                     error && (
+                        <div className="error">
+                           { error }
+                        </div>
+                     )
+                  }
+                  {
+                     isPending ? 
+                        <Button
+                        fullWidth
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        disabled
+                        >
+                           Loading...
+                        </Button>
+                     :
+                        <Button
+                        fullWidth
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        >
+                           Sign up
+                        </Button> 
+                  }
+                  
+                  <Link to="/">
+                     <p className="small">Already have an account? <span>Sign in</span></p>
+                  </Link>
+               </form>
+            </Card>
+         </div>
       </div>
    );
 }

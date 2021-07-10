@@ -22,7 +22,7 @@ const useNotif = (collection) => {
          })
          return (() => unsub())
       }
-   }, [collection])
+   }, [collection, user])
 
    return {notifCollection}
 }

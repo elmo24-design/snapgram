@@ -4,7 +4,7 @@ import useAllPublicPosts from '../hooks/useAllPublicPosts';
 import useAllUsers from '../hooks/useAllUsers';
 import {Avatar} from '@material-ui/core';
 import { useAuth } from '../contexts/AuthContext';
-import useCurrentUser from '../hooks/useCurrentUser';
+import {Link} from 'react-router-dom';
 
 const imgVariants = {
    hover: {
@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
       width: theme.spacing(3.5),
       height: theme.spacing(3.5)
    },
+   link: {
+      color: 'black'
+   }
 
 }))
 
@@ -40,7 +43,6 @@ const ImageGridHome = ({setSelectedPost,setLikedPost,unlikePost}) => {
    const classes = useStyles()
    const {docs} = useAllPublicPosts('memories')
    const {usersCollection} = useAllUsers('users')
-   const {userCollection} = useCurrentUser('users')
    const {user} = useAuth()
 
    return ( 
@@ -70,7 +72,9 @@ const ImageGridHome = ({setSelectedPost,setLikedPost,unlikePost}) => {
                                        <div className="card-bottom-home">
                                           <div className="user-bottom-home">
                                              <Avatar src={owner.profilePic} className={classes.small}/>
-                                             <small className="small-bottom-home">{owner.username}</small>
+                                             <Link to={`/user/${owner.id}`} className={classes.link}>
+                                                <small className="small-bottom-home">{owner.username}</small>
+                                             </Link>
                                           </div>
                                           <div className="icons-home">
                                              {

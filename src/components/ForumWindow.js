@@ -16,6 +16,7 @@ import useAllPosts from '../hooks/useAllPosts';
 import { projectFirestore, projectStorage, timestamp } from '../firebase/config';
 import CommentSection from './CommentSection';
 import useComments from '../hooks/useComments';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
    list: { 
@@ -33,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
    },
    icon:{
       fontSize: '1rem'
+   },
+   link:{
+      color: 'black',
+      cursor: 'pointer'
    }
 }))
 
@@ -120,10 +125,12 @@ const ForumWindow = ({selectedPost,setSelectedPost,likePost,unlikePost,likedPost
    return (
       <motion.div className="forum-window" variants={forumVariants}>
          <div className="heading">
-            <div>
-               <Avatar src={selectedUser.profilePic} alt="avatar"/>
-               <p>{selectedUser.username}</p>
-            </div>
+            <Link to={`/user/${selectedPost.userId}`} className={classes.link}>
+               <div>
+                  <Avatar src={selectedUser.profilePic} alt="avatar"/>
+                  <p className="username-forum-window">{selectedUser.username}</p>
+               </div>
+            </Link>
             {
                selectedPost.userId === user.uid ? 
                   <i class="fas fa-ellipsis-h" 
@@ -160,8 +167,12 @@ const ForumWindow = ({selectedPost,setSelectedPost,likePost,unlikePost,likedPost
          <Divider />
          <div className="heading2">
             <div className="inner">
-               <Avatar src={selectedUser.profilePic} alt="avatar"/>
-               <p className="username">{selectedUser.username}</p>
+               <Link to={`/user/${selectedPost.userId}`} className={classes.link}>
+                  <Avatar src={selectedUser.profilePic} alt="avatar"/>
+               </Link>
+               <Link to={`/user/${selectedPost.userId}`} className={classes.link}>
+                  <p className="username username-forum-window">{selectedUser.username}</p>
+               </Link>
                <small className="status">({selectedPost.status})</small>
             </div>
             <div className="desc">{selectedPost.description}</div>

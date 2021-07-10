@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion';
 //Radio fields
@@ -12,7 +11,6 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import { projectFirestore } from '../firebase/config';
-import { useAuth } from '../contexts/AuthContext';
 
 const backdrop = {
    hidden: {

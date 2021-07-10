@@ -3,6 +3,7 @@ import useAllPosts from '../hooks/useAllPosts';
 import moment from 'moment'
 import { useEffect, useState } from 'react';
 import { projectFirestore } from '../firebase/config';
+import { Link } from "react-router-dom";
 
 const NotifInner = ({user,notif,setSelectedPost}) => {
    const {docs} = useAllPosts('memories')
@@ -29,7 +30,12 @@ const NotifInner = ({user,notif,setSelectedPost}) => {
          <div className="right">
             <div>
                <span className="formatted-date">{formattedDate}</span>
-               <div><span className="username-notif">{user.username}</span>{notif.body} </div>
+               <div>
+                  <Link to={`/user/${user.id}`}>
+                     <span className="username-notif">{user.username}</span>
+                  </Link>
+                  {notif.body} 
+               </div>
             </div>
             {
                docs && docs.map(doc => ( 

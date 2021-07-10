@@ -38,7 +38,7 @@ const EditModal = ({ setEditModal,setEditInfo,setChangePassword }) => {
    const classes= useStyles()
 
    const closeBackdrop = (e) => {
-      if(e.target.classList == 'backdrop'){
+      if(e.target.classList.contains('backdrop')){
          setEditModal(false)
       }
    }

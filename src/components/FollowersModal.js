@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import useAllUsers from '../hooks/useAllUsers';
 import {Avatar, Divider} from '@material-ui/core';
 import {Button} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const backdrop = {
    hidden: {
@@ -58,14 +59,16 @@ const FollowersModal = ({targetUserFollowers,setTargetUserFollowers}) => {
                                              <Avatar src={user.profilePic}/>
                                              <span>{user.username}</span>
                                           </div>
-                                       
-                                          <Button 
-                                             variant="contained" 
-                                             color="primary" 
-                                             size="small"
-                                          >
-                                             View Profile
-                                          </Button> 
+
+                                          <Link to={`/user/${user.id}`}>
+                                             <Button 
+                                                variant="contained" 
+                                                color="primary" 
+                                                size="small"
+                                             >
+                                                View Profile
+                                             </Button> 
+                                          </Link>
                                        </div>
                                     : 
                                     ''

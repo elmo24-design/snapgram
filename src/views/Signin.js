@@ -3,8 +3,13 @@ import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core'
 import { Link, useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { projectAuth } from '../firebase/config';
+import snapgramLeft from '../images/snapgram-left.png';
+import snapgram1 from '../images/snapgram-1.png';
+import snapgram2 from '../images/snapgram-2.png';
+import snapgram3 from '../images/snapgram-3.png';
+import snapgram4 from '../images/snapgram-4.png';
 
 const useStyles = makeStyles({
    field: {
@@ -37,6 +42,30 @@ const Signin = () => {
    //error messages
    const [emailErrorText, setEmailErrorText] = useState('')
    const [passwordErrorText, setPasswordErrorText] = useState('')
+
+   //Slide show
+   let [iteration,setIteration] = useState(0)
+   let [images, setImages] = useState([])
+
+   images[0] = snapgram1
+   images[1] = snapgram2
+   images[2] = snapgram3
+   images[3] = snapgram4
+
+   const changeImg = () => {
+      if(iteration < images.length -1){
+         setIteration(iteration+=1)
+      }else{
+         setIteration(0)
+      }
+   }
+
+   useEffect(() => {
+      setTimeout(() => {
+         changeImg()
+      },4000)
+   })
+      
 
    const handleSubmit = async(e) => {
       e.preventDefault() 
@@ -98,69 +127,76 @@ const Signin = () => {
       setPasswordErrorText('')
    }
 
+
    return ( 
       <div className="sign-in">
-         <Card className="card">
-            <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-               <h1>Snapgram</h1>
-               <TextField
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  fullWidth 
-                  className={ classes.field }
-                  required id="outlined-basic" 
-                  label="E-Mail Address"
-                  error={emailError}
-                  helperText={emailErrorText}
-                  variant="filled" />
-               <TextField
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  fullWidth 
-                  className={ classes.field }
-                  required 
-                  id="outlined-basic" 
-                  label="Password" 
-                  type="password"
-                  variant="filled"
-                  error={passwordError}
-                  helperText={passwordErrorText}
-               />
-               {
-                  error && (
-                     <div className="error">
-                        { error }
-                     </div>
-                  )
-               }
-               {
-                  isPending ? 
-                     <Button
-                     fullWidth
-                     className={classes.button}
-                     variant="contained"
-                     color="primary"
-                     type="submit"
-                     disabled
-                     >
-                        Loading...
-                     </Button>
-                  :
-                     <Button
-                     fullWidth
-                     className={classes.button}
-                     variant="contained"
-                     color="primary"
-                     type="submit"
-                     >
-                        Log in
-                     </Button> 
-               }
-               <Link to="/signup">
-                  <p className="small">Don't have an account yet? <span>Sign up</span></p>
-               </Link>
-            </form>
-         </Card>
+         <div className="signin-img-wrapper">
+            <img src={snapgramLeft} alt="pic" className="snapgram-left"/>
+            <img src={images[iteration]} alt="" className="images"/>
+         </div>
+         <div className="card-wrapper">
+            <Card className="card">
+               <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                  <h1>Snapgram</h1>
+                  <TextField
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)}
+                     fullWidth 
+                     className={ classes.field }
+                     required id="outlined-basic" 
+                     label="E-Mail Address"
+                     error={emailError}
+                     helperText={emailErrorText}
+                     variant="filled" />
+                  <TextField
+                     value={password}
+                     onChange={(e) => setPassword(e.target.value)}
+                     fullWidth 
+                     className={ classes.field }
+                     required 
+                     id="outlined-basic" 
+                     label="Password" 
+                     type="password"
+                     variant="filled"
+                     error={passwordError}
+                     helperText={passwordErrorText}
+                  />
+                  {
+                     error && (
+                        <div className="error">
+                           { error }
+                        </div>
+                     )
+                  }
+                  {
+                     isPending ? 
+                        <Button
+                        fullWidth
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        disabled
+                        >
+                           Loading...Please Wait...
+                        </Button>
+                     :
+                        <Button
+                        fullWidth
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        >
+                           Log in
+                        </Button> 
+                  }
+                  <Link to="/signup">
+                     <p className="small">Don't have an account yet? <span>Sign up</span></p>
+                  </Link>
+               </form>
+            </Card>
+         </div>
       </div>
    );
 }

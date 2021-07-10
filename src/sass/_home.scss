@@ -14,6 +14,10 @@
 .small-bottom-home{
    font-weight: bold;
    padding-left: 5px;
+   cursor: pointer;
+   &:hover{
+      text-decoration: underline;
+   }
 }
 .icons-home{
    display: flex;
@@ -79,4 +83,9 @@
 }
 .not-yet{
    padding: 1rem 0;
+}
+@media(max-width: 700px){
+   .home{
+      padding-top: 8rem;
+   }
 }
