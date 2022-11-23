@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-const ImageGridHome = ({setSelectedPost,setLikedPost,unlikePost}) => {
+const ImageGridHome = ({setSelectedPost,setLikedPost,likePost,unlikePost}) => {
    const classes = useStyles()
    const {docs} = useAllPublicPosts('memories')
    const {usersCollection} = useAllUsers('users')
@@ -81,7 +81,7 @@ const ImageGridHome = ({setSelectedPost,setLikedPost,unlikePost}) => {
                                              user && doc.likes.includes(user.uid) ? 
                                                    <i class="fas fa-heart" id="liked" onClick={() => unlikePost(doc,doc.id)}></i>
                                                 :
-                                                   <i class="far fa-heart" onClick={() => setSelectedPost(doc)}></i>
+                                                   <i class="far fa-heart" onClick={() => likePost(doc, doc.id)}></i>
                                              }
                                              <small className="heart-length" 
                                                 onClick={() => setLikedPost(doc)}
